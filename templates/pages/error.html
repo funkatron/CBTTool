@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="large-9 large-centered small-12 small-centered columns">
+    <h2>Something went horribly wrong.</h2>
+    {% if error_msg %}
+        <p class="subheader">{{error_msg}}</p>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

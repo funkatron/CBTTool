@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CBT Tool</title>
+        <link rel="stylesheet" href="foundation/css/foundation.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <script src="foundation/js/vendor/modernizr.js"></script>
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="small-12 columns">
+                <h1>CBT Tool</h1>
+            </div>
+        </div>
+
+        <form>
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Events &#x2192; Thoughts &#x2192; Feelings &#x2192; Actions</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-6 columns">
+                    <label>What happened
+                        <textarea class="log-textarea" name="event" id="event"></textarea>
+                    </label>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <label>What did I tell myself?
+                        <textarea class="log-textarea" name="thoughts" id="thoughts"></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-6 columns">
+                    <label>How did I feel?
+                        <textarea class="log-textarea" name="feelings" id="feelings"></textarea>
+                    </label>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <label>What did I do?
+                        <textarea class="log-textarea" name="behaviors" id="behaviors"></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Challenge your thinking</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 large-6 columns">
+                    <label>Are my thoughts accurate?
+                        <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate">
+                    </label>
+                </div>
+
+                <div class="small-12 large-6 columns">
+                    <label>Are my thoughts helpful?
+                        <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate">
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <label>Did I make a thinking mistake?
+                        <select name="thinking-mistake">
+                            <option value="no">Nope</option>
+                            <option value="black-and-white">Black-and-white thinking</option>
+                            <option value="unreal-ideal">Unreal ideal</option>
+                            <option value="filtering-for-negative">Filtering (only seeing negative)</option>
+                            <option value="personalizing">Personalizing: The self-blame game</option>
+                            <option value="mind reading">Mind-reading</option>
+                            <option value="catastrophizing">Catastrophizing</option>
+                            <option value="over-generalizing">Over-generalizing (always/never)</option>
+                            <option value="fact-vs-feeling">Fact versus feeling</option>
+                            <option value="labeling">Labeling (I'm stupid/ugly)</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 large-6 columns">
+                    <label>What could I say to myself that would be more accurate/positive/helpful?
+                        <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate">
+                    </label>
+                </div>
+
+                <div class="small-12 large-6 columns end">
+                    <label>How would I feel if I told myself this?
+                        <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate">
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="small-12 columns end">
+                    <input class="button right" type="submit" value="Save">
+                </div>
+            </div>
+        </form>
+
+        <script src="foundation/js/vendor/jquery.js"></script>
+        <script src="foundation/js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>
