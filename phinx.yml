@@ -1,0 +1,17 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/migrations
+
+environments:
+    default_migration_table: phinxlog
+    default_database: development
+    production:
+        adapter: sqlite
+        name: ./data/cbttool.sqlite3
+
+    development:
+        adapter: sqlite
+        name: ./data/cbttool.sqlite3
+
+    testing:
+        adapter: sqlite
+        memory: true  # no name arg if memory
