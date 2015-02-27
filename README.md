@@ -9,6 +9,8 @@ A simple web-based Cognitive Behavior Therapy tool
 - Install vendor packages with `composer update`
 - ***copy*** `app/settings/base.SAMPLE.php` to `app/settings/base.php` and fill in your values
 - ***symlink*** `app/app-settings.php` to `app/settings/development.php` with `ln -s app/settings/development.php app/app-settings.php`
+- create an empty sqlite3 database with the command `sqlite3 ./data/cbttool.sqlite3 "select ''"`
+- run the DB migrations with `php vendor/bin/phinx migrate`
 
 
 ## Running dev server
