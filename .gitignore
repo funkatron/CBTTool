@@ -1,3 +1,4 @@
 /vendor/
 .DS_Store
 /app/settings/base.php
+*.sqlite3
