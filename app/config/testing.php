@@ -2,10 +2,8 @@
 
 use Monolog\Logger;
 
-include "{$BASE_PATH}/app/settings/base.php";
-
-$APP_SETTINGS = array_merge($BASE_APP_SETTINGS, [
-    "mode" => "development",
+return array(
+    "mode" => "testing",
     "debug" => true,
     "cookies.encrypt" => false,
     "cookies.secure" => "false",
@@ -13,9 +11,8 @@ $APP_SETTINGS = array_merge($BASE_APP_SETTINGS, [
     "twig.debug" => true,
     "twig.cache_path" => "/tmp/twig_cache",
 
-    "resty.debug" => false,
-
-    "memcached.default.expriation" => "+30 seconds",
+    "db.type" => "sqlite",
+    "db.pdo.connect" => "sqlite:{$_ENV['CONFIG_APP_BASE_PATH']}/data/cbttool_testing.sqlite3",
 
     "monolog.level" => Logger::DEBUG,
-]);
+);

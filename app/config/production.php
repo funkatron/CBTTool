@@ -1,8 +1,6 @@
 <?php
 
-include "{$BASE_PATH}/app/settings/base.php";
-
-$APP_SETTINGS = array_merge($BASE_APP_SETTINGS, [
+return array(
     "mode" => "production",
     "debug" => false,
     "log.enabled" => false,
@@ -10,4 +8,8 @@ $APP_SETTINGS = array_merge($BASE_APP_SETTINGS, [
     "cookies.secure" => true,
     "cookies.httponly" => true,
     "twig.debug" => false,
-]);
+
+    "db.type" => "sqlite",
+    "db.pdo.connect" => "sqlite:{$_ENV['CONFIG_APP_BASE_PATH']}/data/cbttool.sqlite3",
+
+);

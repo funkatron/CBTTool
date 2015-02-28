@@ -4,24 +4,32 @@
  * edit this if you need to move the www root
  * @var string
  */
-$BASE_PATH = realpath(dirname(__FILE__) . '/..');
+$_ENV['APP_BASE_PATH'] = realpath(dirname(__FILE__) . '/..');
 
 /**
  * We use the composer autoloader for everything
  */
-require "{$BASE_PATH}/vendor/autoload.php";
+require "{$_ENV['APP_BASE_PATH']}/vendor/autoload.php";
 
 /**
- * include Monolog via namespace
+ * libs we'll use here
  */
 use Monolog\Logger;
 use Monolog\Handler\ErrorLogHandler;
+use CBTTool\Lib\App;
+use CBTTool\Lib\Config;
 
 /**
- * $APP_SETTINGS is assigned inside the app-settings.php file
+ * load the config files
+ * @var CBTTool\Lib\Config
  */
-include "{$BASE_PATH}/app/app-settings.php";
-$app = new \CBTTool\Lib\App($APP_SETTINGS);
+$config = Config::loadAppConfig($_ENV['APP_BASE_PATH']);
+
+/**
+ * App object that extends Slim\Slim
+ * @var CBTTool\Lib\App
+ */
+$app = new App($config->toArray());
 
 /**
  * set-up monolog in app singleton container
@@ -71,6 +79,6 @@ $app->add(new \Slim\Middleware\SessionCookie([
 /**
  * include route files
  */
-include "{$BASE_PATH}/app/routes/index.php";
+include "{$_ENV['APP_BASE_PATH']}/app/routes/index.php";
 
 $app->run();

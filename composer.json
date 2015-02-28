@@ -4,8 +4,15 @@
         "slim/views": "0.1.*",
         "twig/twig": "1.18.0",
         "monolog/monolog": "1.12.0",
+        "aura/sql": "2.4.0",
         "aura/sqlquery": "2.2.0",
-        "robmorgan/phinx": "0.4.3"
+        "robmorgan/phinx": "0.4.3",
+        "noodlehaus/config": "0.7.1"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "4.5.0",
+        "fzaninotto/faker": "1.4.0"
     },
 
     "autoload": {

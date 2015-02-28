@@ -14,4 +14,4 @@ environments:
 
     testing:
         adapter: sqlite
-        memory: true  # no name arg if memory
+        name: ./data/cbttool_testing.sqlite3

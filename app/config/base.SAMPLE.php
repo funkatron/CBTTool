@@ -2,15 +2,11 @@
 
 use Monolog\Logger;
 
-
-/**
- * $BASE_PATH is set in htdocs/index.php
- */
-$BASE_APP_SETTINGS = [
+return array(
     "mode" => "base",
     'view' => new \Slim\Views\Twig(),
     "debug" => false,
-    "templates.path" => "{$BASE_PATH}/templates",
+    "templates.path" => "../templates",
     "cookies.encrypt" => true,
     "cookies.lifetime" => "2 years",
     "cookies.path" => "/",
@@ -25,4 +21,4 @@ $BASE_APP_SETTINGS = [
     "monolog.level" => Logger::ERROR,
 
     "csrf.secret" => "FIX_ME",
-];
+);
