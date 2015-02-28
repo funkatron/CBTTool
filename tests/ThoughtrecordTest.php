@@ -52,7 +52,8 @@ class ThoughtrecordTest extends PHPUnit_Framework_TestCase
         $row = $tr->getById($id);
         
         $this->assertTrue(is_numeric($row['id']), "row id should be numeric");
-        $this->assertTrue(is_string($row['id_hash']), "row id_rash should be an string");
+        $this->assertTrue(is_string($row['id_hash']), "row id_hash should be an string");
+        $this->assertEquals(32, strlen($row['id_hash']), "row id_hash should be 32 chars long");
         $this->assertEquals($trdata['event'], $row['event']);
         $this->assertEquals($trdata['thoughts'], $row['thoughts']);
         $this->assertEquals($trdata['feelings'], $row['feelings']);
