@@ -63,6 +63,7 @@ class ThoughtrecordTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($trdata['thinking_mistake_id'], $row['thinking_mistake_id']);
         $this->assertEquals($trdata['say_to_self'], $row['say_to_self']);
         $this->assertEquals($trdata['how_feel'], $row['how_feel']);
+        $this->assertTrue(!empty($row['thinking_mistake']), "the thinking mistake 'label' string should be included in row");
     }
 
 }
