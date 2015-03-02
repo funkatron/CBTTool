@@ -1,9 +1,9 @@
 {% extends "layouts/base.html" %}
 
-{% block title %}{% if region_description is defined %}: {{region_description}}{% endif %}{% endblock %}
+{% block title %}{% if page_title is defined %}: {{page_title}}{% endif %}{% endblock %}
 
 {% block body %}
-    <form>
+    <form action="/" method="POST">
         <div class="row">
             <div class="small-12 columns">
                 <h2>Events &#x2192; Thoughts &#x2192; Feelings &#x2192; Actions</h2>
@@ -43,13 +43,13 @@
         <div class="row">
             <div class="small-12 large-6 columns">
                 <label>Are my thoughts accurate?
-                    <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate" required>
+                    <input type="text" class="log-text" name="thoughts_accurate" id="thoughts_accurate" required>
                 </label>
             </div>
 
             <div class="small-12 large-6 columns">
                 <label>Are my thoughts helpful?
-                    <input type="text" class="log-text" name="thoughts-accurate" id="thoughts-accurate" required>
+                    <input type="text" class="log-text" name="thoughts_helpful" id="thoughts_helpful" required>
                 </label>
             </div>
         </div>
@@ -57,10 +57,10 @@
         <div class="row">
             <div class="small-12 columns">
                 <label>Did I make a thinking mistake?
-                    <select name="thinking-mistake" required>
+                    <select name="thinking_mistake_id" required>
                         <option value="no">Nope</option>
                         {% for tm in thinking_mistakes %}
-                            <option value="{{tm.value}}">{{tm.label}}</option>
+                            <option value="{{tm.id}}">{{tm.label}}</option>
                         {% endfor %}
                     </select>
                 </label>
@@ -70,13 +70,13 @@
         <div class="row">
             <div class="small-12 large-6 columns">
                 <label>What could I say to myself that would be more accurate/positive/helpful?
-                    <input type="text" class="log-text" name="say-to-self" id="say-to-self" required>
+                    <input type="text" class="log-text" name="say_to_self" id="say_to_self" required>
                 </label>
             </div>
 
             <div class="small-12 large-6 columns end">
                 <label>How would I feel if I told myself this?
-                    <input type="text" class="log-text" name="how-feel" id="how-feel" required>
+                    <input type="text" class="log-text" name="how_feel" id="how_feel" required>
                 </label>
             </div>
         </div>

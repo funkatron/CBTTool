@@ -4,23 +4,34 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>CBT Tool {% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="foundation/css/foundation.css" />
-        <link rel="stylesheet" href="css/app.css" />
-        <script src="foundation/js/vendor/modernizr.js"></script>
+        <link rel="stylesheet" href="/foundation/css/foundation.css" />
+        <link rel="stylesheet" href="/css/app.css" />
+        <script src="/foundation/js/vendor/modernizr.js"></script>
     </head>
     <body>
 
-        <div class="row">
-            <div class="small-12 columns">
-                <h1>CBT Tool</h1>
-            </div>
-        </div>
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="/">CBT Tool</a></h1>
+                </li>
+                 <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <li class="active"><a href="https://github.com/funkatron/CBTTool">View on GitHub</a></li>
+                </ul>
+            </section>
+        </nav>
 
         {% block body %}
         {% endblock %}
 
-        <script src="foundation/js/vendor/jquery.js"></script>
-        <script src="foundation/js/foundation.min.js"></script>
+        <script src="/foundation/js/vendor/jquery.js"></script>
+        <script src="/foundation/js/foundation.min.js"></script>
         <script>
             $(document).foundation();
         </script>

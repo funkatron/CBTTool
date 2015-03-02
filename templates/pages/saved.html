@@ -1,0 +1,76 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{% if page_title is defined %}: {{page_title}}{% endif %}{% endblock %}
+
+{% block body %}
+    <form action="/" method="POST">
+        <div class="row">
+            <div class="small-12 columns">
+                <h2>Thought Record saved on {{date_created}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <h3 class="panel">Events &#x2192; Thoughts &#x2192; Feelings &#x2192; Actions</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-6 columns">
+                <h4>What happened?</h4>
+                <p>{{event}}</p>
+            </div>
+            <div class="small-12 large-6 columns">
+                <h4>What did I tell myself?</h4>
+                <p>{{thoughts}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-6 columns">
+                <h4>How did I feel?</h4>
+                <p>{{feelings}}</p>
+            </div>
+            <div class="small-12 large-6 columns">
+                <h4>What did I do?</h4>
+                <p>{{behaviors}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-12 columns">
+                <h3 class="panel">Challenge your thinking</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-12 large-6 columns">
+                <h4>Are my thoughts accurate?</h4>
+                <p>{{thoughts_accurate}}</p>
+            </div>
+
+            <div class="small-12 large-6 columns">
+                <h4>Are my thoughts helpful?</h4>
+                <p>{{thoughts_helpful}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-12 columns">
+                <h4>Did I make a thinking mistake?</h4>
+                <p>{{thinking_mistake}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-12 large-6 columns">
+                <h4>What could I say to myself that would be more accurate/positive/helpful?</h4>
+                <p>{{say_to_self}}</p>
+            </div>
+
+            <div class="small-12 large-6 columns end">
+                <h4>How would I feel if I told myself this?</h4>
+                <p>{{how_feel}}</p>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
