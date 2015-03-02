@@ -33,12 +33,12 @@ $app->post('/', function () use ($app) {
     $row = $tr->getById($new_id);
     $id_hash = $row['id_hash'];
 
-    $app->redirect("/saved/{$id_hash}");
+    $app->redirect($app->request->getRootUri()."/saved/{$id_hash}");
 });
 
 $app->get('/saved/:id', function ($saved_id) use ($app) {
     // display "frozen" version of form
     $tr = new Thoughtrecord($app->getConfig());
     $row = $tr->getByHash($saved_id);
-        $app->render('pages/saved.html', $row);
+    $app->render('pages/saved.html', $row);
 })->conditions(array('id' => '([a-f0-9]+)'));

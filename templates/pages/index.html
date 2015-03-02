@@ -3,7 +3,7 @@
 {% block title %}{% if page_title is defined %}: {{page_title}}{% endif %}{% endblock %}
 
 {% block body %}
-    <form action="/" method="POST">
+    <form action="{{siteUrl('/')}}" method="POST">
         <div class="row">
             <div class="small-12 columns">
                 <h2>Events &#x2192; Thoughts &#x2192; Feelings &#x2192; Actions</h2>
