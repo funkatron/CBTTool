@@ -40,5 +40,5 @@ $app->get('/saved/:id', function ($saved_id) use ($app) {
     // display "frozen" version of form
     $tr = new Thoughtrecord($app->getConfig());
     $row = $tr->getByHash($saved_id);
-    var_dump($row);
-})->conditions(array('id' => '([a-f0-9])'));
+        $app->render('pages/saved.html', $row);
+})->conditions(array('id' => '([a-f0-9]+)'));
