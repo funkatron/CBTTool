@@ -54,7 +54,7 @@ class Thoughtrecord extends DBAL
      * @param  string   $id
      * @return array
      */
-    public function getByHash($hash_id)
+    public function getByHash($id_hash)
     {
         $select = $this->makeQueryFactory()->newSelect();
         $select->from($this->DB_TABLE)
@@ -71,14 +71,15 @@ class Thoughtrecord extends DBAL
                 'thinking_mistake.label as thinking_mistake',
                 'say_to_self',
                 'how_feel',
+                'date_created'
             ))
             ->join(
                 'LEFT',
                 'thinking_mistake',
                 'thinking_mistake.id = thinking_mistake_id'
             )
-            ->where('thought_record.hash_id = :hash_id')
-            ->bindValue('hash_id', $hash_id);
+            ->where('thought_record.id_hash = :id_hash')
+            ->bindValue('id_hash', $id_hash);
         $sth = $this->sendQuery($select);
         return $sth->fetch(\PDO::FETCH_ASSOC);
     }
