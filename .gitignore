@@ -2,3 +2,4 @@
 .DS_Store
 /app/config/base.php
 *.sqlite3
+.idea
