@@ -59,15 +59,9 @@
                 <label>Did I make a thinking mistake?
                     <select name="thinking-mistake" required>
                         <option value="no">Nope</option>
-                        <option value="black-and-white">Black-and-white thinking</option>
-                        <option value="unreal-ideal">Unreal ideal</option>
-                        <option value="filtering-for-negative">Filtering (only seeing negative)</option>
-                        <option value="personalizing">Personalizing: The self-blame game</option>
-                        <option value="mind reading">Mind-reading</option>
-                        <option value="catastrophizing">Catastrophizing</option>
-                        <option value="over-generalizing">Over-generalizing (always/never)</option>
-                        <option value="fact-vs-feeling">Fact versus feeling</option>
-                        <option value="labeling">Labeling (I'm stupid/ugly)</option>
+                        {% for tm in thinking_mistakes %}
+                            <option value="{{tm.value}}">{{tm.label}}</option>
+                        {% endfor %}
                     </select>
                 </label>
             </div>
