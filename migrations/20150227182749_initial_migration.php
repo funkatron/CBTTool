@@ -28,16 +28,16 @@ class InitialMigration extends AbstractMigration
             ->addIndex(array('id_hash'), array('unique' => true))
             ->create();
 
-        $this->execute("insert into thinking_mistake(value, label, order) values ('no', 'Nope', 1)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('black-and-white', 'Black-and-white thinking', 2)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('unreal-ideal', 'Unreal ideal', 3)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('filtering-for-negative', 'Filtering (only seeing negative)', 4)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('personalizing', 'Personalizing: The self-blame game', 5)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('mind reading', 'Mind-reading', 6)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('catastrophizing', 'Catastrophizing', 7)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('over-generalizing', 'Over-generalizing (always/never)', 8)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('fact-vs-feeling', 'Fact versus feeling', 9)");
-        $this->execute("insert into thinking_mistake(value, label, order) values ('labeling', 'Labeling (I'm stupid/ugly)', 10)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('no', 'Nope', 1)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('black-and-white', 'Black-and-white thinking', 2)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('unreal-ideal', 'Unreal ideal', 3)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('filtering-for-negative', 'Filtering (only seeing negative)', 4)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('personalizing', 'Personalizing: The self-blame game', 5)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('mind reading', 'Mind-reading', 6)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('catastrophizing', 'Catastrophizing', 7)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('over-generalizing', 'Over-generalizing (always/never)', 8)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('fact-vs-feeling', 'Fact versus feeling', 9)");
+        $this->execute("insert into thinking_mistake('value', 'label', 'order') values ('labeling', 'Labeling (I'm stupid/ugly)', 10)");
 
     }
 }

@@ -3,66 +3,16 @@ namespace CBTTool\Model;
 
 use Aura\SqlQuery\QueryFactory;
 use Aura\Sql\ExtendedPdo;
+use CBTTool\Lib\DBAL;
 use CBTTool\Lib\Config;
 
 /**
  * this is really a Database abstraction layer, not a "model" per se.
  */
-class Thoughtrecord
+class Thoughtrecord extends DBAL
 {
-    public static $DB_TYPE = 'sqlite';
-    public static $DB_TABLE = 'thought_record';
-
-    /**
-     * @var CBTTool\Lib\Config
-     */
-    public $config;
-
-    public function __construct(Config $config)
-    {
-        $this->config = $config;
-        $this->extendedPdo = $this->makeExtendedPdo();
-    }
-
-    /**
-     * @return Aura\SqlQuery\QueryFactory
-     */
-    public function makeQueryFactory()
-    {
-        return new QueryFactory(self::$DB_TYPE);
-    }
-
-    public function makeExtendedPdo()
-    {
-        return new ExtendedPdo($this->config->get('db.pdo.connect')); 
-    }
-
-    /**
-     * [sendQuery description]
-     * @param  Aura\SqlQuery\Common\Select|Aura\SqlQuery\Common\Insert|Aura\SqlQuery\Common\Update|Aura\SqlQuery\Common\Delete $query [description]
-     * @return PDOStatement
-     */
-    public function sendQuery($query)
-    {
-        // prepare the statement
-        $sth = $this->extendedPdo->prepare($query->__toString());
-
-        // execute with bound values
-        $sth->execute($query->getBindValues());
-
-        return $sth;
-    }
-
-    /**
-     * return an array of rows.
-     * @param  integer $limit default 10
-     * @param  integer $skip  default 0
-     * @return array
-     */
-    public function getAll($limit = 10, $skip = 0)
-    {
-        $select = $this->makeQueryFactory()->newSelect();
-    }
+    public $DB_TYPE = 'sqlite';
+    public $DB_TABLE = 'thought_record';
 
     /**
      * returns a single record by ID
@@ -72,9 +22,9 @@ class Thoughtrecord
     public function getById($id)
     {
         $select = $this->makeQueryFactory()->newSelect();
-        $select->from(self::$DB_TABLE)
+        $select->from($this->DB_TABLE)
             ->cols(array(
-                'id',
+                'thought_record.id as id',
                 'id_hash',
                 'event',
                 'thoughts',
@@ -83,10 +33,16 @@ class Thoughtrecord
                 'thoughts_accurate',
                 'thoughts_helpful',
                 'thinking_mistake_id',
+                'thinking_mistake.label as thinking_mistake',
                 'say_to_self',
                 'how_feel',
             ))
-            ->where('id = :id')
+            ->join(
+                'LEFT',
+                'thinking_mistake',
+                'thinking_mistake.id = thinking_mistake_id'
+            )
+            ->where('thought_record.id = :id')
             ->bindValue('id', $id);
         $sth = $this->sendQuery($select);
         return $sth->fetch(\PDO::FETCH_ASSOC);
@@ -97,7 +53,7 @@ class Thoughtrecord
     public function save(array $record_data)
     {
         $insert = $this->makeQueryFactory()->newInsert();
-        $insert->into(self::$DB_TABLE)
+        $insert->into($this->DB_TABLE)
             ->cols(array(
                 'id_hash' => $this->generateIdHash(),
                 'event' => $record_data['event'],
