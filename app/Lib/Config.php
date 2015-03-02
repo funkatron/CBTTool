@@ -1,7 +1,15 @@
 <?php
+/**
+ * We use \Noodlehaus\Config instead of the Slim config stuff mainly so we can pass around the config more easily,
+ * and use it independently of Slim for testing and such.
+ */
 
 namespace CBTTool\Lib;
 
+/**
+ * Class Config
+ * @package CBTTool\Lib
+ */
 class Config extends \Noodlehaus\Config
 {
     const APP_MODE_DEVELOPMENT = 'development';
@@ -9,6 +17,21 @@ class Config extends \Noodlehaus\Config
     const APP_MODE_TESTING = 'testing';
 
     const APP_MODE_PRODUCTION = 'production';
+
+    /**
+     * We extend the constructor to allow no arguments to be passed. If none are passed, we don't do *anything*, which
+     * lets us set the config data via an array. If $path is not null, though, it will attempt to load the config
+     * from files
+     * @param null|string|array $path  Path(s) to config files. Optional.
+     * @throws \Noodlehaus\Exception\FileNotFoundException
+     * @see \CBTTool\Lib\Config::setFromArray
+     */
+    public function __construct($path = null)
+    {
+        if (!empty($path)) {
+            parent::__construct($path);
+        }
+    }
 
     public static function loadAppConfig($base_path = null, $mode = 'development')
     {
@@ -80,6 +103,18 @@ class Config extends \Noodlehaus\Config
 
         // Assign value at target node
         $this->cache[$key] = $root = $value;
+    }
+
+    /**
+     * set values from key/val array pairs
+     * We add this here so we can set Config data directly from an array, instead of loading a file
+     * We use this to extract the config from the App object and give it to our Models
+     * @param array $config_array
+     * @see \CBTTool\Lib\App::getConfig
+     */
+    public function setFromArray(array $config_array)
+    {
+        $this->data = array_merge($config_array);
     }
 
     public function toArray()
