@@ -49,8 +49,6 @@ class Thinkingmistake extends DBAL
             ->limit($limit)
             ->offset($skip);
 
-        var_dump($select->__toString());
-
         $sth = $this->sendQuery($select);
 
         $rows = array();
