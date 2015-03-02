@@ -49,6 +49,40 @@ class Thoughtrecord extends DBAL
     }
 
 
+        /**
+     * returns a single record by ID
+     * @param  string   $id
+     * @return array
+     */
+    public function getByHash($hash_id)
+    {
+        $select = $this->makeQueryFactory()->newSelect();
+        $select->from($this->DB_TABLE)
+            ->cols(array(
+                'thought_record.id as id',
+                'id_hash',
+                'event',
+                'thoughts',
+                'feelings',
+                'behaviors',
+                'thoughts_accurate',
+                'thoughts_helpful',
+                'thinking_mistake_id',
+                'thinking_mistake.label as thinking_mistake',
+                'say_to_self',
+                'how_feel',
+            ))
+            ->join(
+                'LEFT',
+                'thinking_mistake',
+                'thinking_mistake.id = thinking_mistake_id'
+            )
+            ->where('thought_record.hash_id = :hash_id')
+            ->bindValue('hash_id', $hash_id);
+        $sth = $this->sendQuery($select);
+        return $sth->fetch(\PDO::FETCH_ASSOC);
+    }
+
 
     public function save(array $record_data)
     {
